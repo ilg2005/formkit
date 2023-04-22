@@ -13,22 +13,18 @@ async function handleSubmit(data) {
     <FormKit type="form"
              submit-label="Login"
              :value="formData"
-             :actions="false"
              @submit="handleSubmit">
-      <template #default="{ state }">
         <h1>Login</h1>
         <FormKit  type="text"
                   label="Username"
                   name="username"
+                  validation="required|length:2,20"
         />
         <FormKit  type="password"
                   label="Password"
                   name="password"
+                  validation="required"
         />
-        <button :disabled="state.loading">
-          {{ state.loading ? "Loading..." : "Login" }}
-        </button>
-      </template>
 
     </FormKit>
   </div>
