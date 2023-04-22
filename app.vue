@@ -10,16 +10,26 @@ async function handleSubmit(data) {
 </script>
 <template>
   <div>
-    <FormKit type="form" :value="formData" @submit="handleSubmit">
-      <h1>Login</h1>
-      <FormKit  type="text"
-                label="Username"
-                name="username"
-      />
-      <FormKit  type="password"
-                label="Password"
-                name="password"
-      />
+    <FormKit type="form"
+             submit-label="Login"
+             :value="formData"
+             :actions="false"
+             @submit="handleSubmit">
+      <template #default="{ state }">
+        <h1>Login</h1>
+        <FormKit  type="text"
+                  label="Username"
+                  name="username"
+        />
+        <FormKit  type="password"
+                  label="Password"
+                  name="password"
+        />
+        <button :disabled="state.loading">
+          {{ state.loading ? "Loading..." : "Login" }}
+        </button>
+      </template>
+
     </FormKit>
   </div>
 </template>
